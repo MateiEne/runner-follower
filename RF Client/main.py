@@ -66,11 +66,7 @@ while True:
         continue
 
     image = np.frombuffer(image_data, dtype=np.uint8)
-
-    # get the command from the follower
-    command = follower.processImage(image)
-    # print(command)
-
+    
     # get the command from the follower
     command = follower.processImage(image)
     # print(command)
