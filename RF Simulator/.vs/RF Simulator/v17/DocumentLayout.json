@@ -3,24 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\enema\\Work\\College\\LICENTA\\RunnerFollower\\RF Simulator\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{323221F0-BC85-F2C3-3A1C-26DDFE3652ED}|Assembly-CSharp.csproj|c:\\users\\enema\\work\\college\\licenta\\runnerfollower\\rf simulator\\assets\\scripts\\cameramanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{323221F0-BC85-F2C3-3A1C-26DDFE3652ED}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\cameramanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{323221F0-BC85-F2C3-3A1C-26DDFE3652ED}|Assembly-CSharp.csproj|c:\\users\\enema\\work\\college\\licenta\\runnerfollower\\rf simulator\\assets\\scripts\\robotcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{323221F0-BC85-F2C3-3A1C-26DDFE3652ED}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\robotcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{323221F0-BC85-F2C3-3A1C-26DDFE3652ED}|Assembly-CSharp.csproj|C:\\Users\\enema\\Work\\College\\LICENTA\\RunnerFollower\\RF Simulator\\assets\\scripts\\tcpserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{323221F0-BC85-F2C3-3A1C-26DDFE3652ED}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\tcpserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{323221F0-BC85-F2C3-3A1C-26DDFE3652ED}|Assembly-CSharp.csproj|C:\\Users\\enema\\Work\\College\\LICENTA\\RunnerFollower\\RF Simulator\\assets\\scripts\\playermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{323221F0-BC85-F2C3-3A1C-26DDFE3652ED}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{323221F0-BC85-F2C3-3A1C-26DDFE3652ED}|Assembly-CSharp.csproj|c:\\users\\enema\\work\\college\\licenta\\runnerfollower\\rf simulator\\assets\\scripts\\inputmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{323221F0-BC85-F2C3-3A1C-26DDFE3652ED}|Assembly-CSharp.csproj|C:\\Users\\enema\\Work\\College\\LICENTA\\RunnerFollower\\RF Simulator\\assets\\scripts\\playerlocomotion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{323221F0-BC85-F2C3-3A1C-26DDFE3652ED}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playerlocomotion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{323221F0-BC85-F2C3-3A1C-26DDFE3652ED}|Assembly-CSharp.csproj|C:\\Users\\enema\\Work\\College\\LICENTA\\RunnerFollower\\RF Simulator\\assets\\scripts\\inputmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{323221F0-BC85-F2C3-3A1C-26DDFE3652ED}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\inputmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{323221F0-BC85-F2C3-3A1C-26DDFE3652ED}|Assembly-CSharp.csproj|c:\\users\\enema\\work\\college\\licenta\\runnerfollower\\rf simulator\\assets\\scripts\\animatormanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{323221F0-BC85-F2C3-3A1C-26DDFE3652ED}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\animatormanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{323221F0-BC85-F2C3-3A1C-26DDFE3652ED}|Assembly-CSharp.csproj|C:\\Users\\enema\\Work\\College\\LICENTA\\RunnerFollower\\RF Simulator\\assets\\scripts\\cameramanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{323221F0-BC85-F2C3-3A1C-26DDFE3652ED}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\cameramanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{323221F0-BC85-F2C3-3A1C-26DDFE3652ED}|Assembly-CSharp.csproj|C:\\Users\\enema\\Work\\College\\LICENTA\\RunnerFollower\\RF Simulator\\assets\\scripts\\playerlocomotion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{323221F0-BC85-F2C3-3A1C-26DDFE3652ED}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playerlocomotion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{323221F0-BC85-F2C3-3A1C-26DDFE3652ED}|Assembly-CSharp.csproj|C:\\Users\\enema\\Work\\College\\LICENTA\\RunnerFollower\\RF Simulator\\assets\\scripts\\animatormanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{323221F0-BC85-F2C3-3A1C-26DDFE3652ED}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\animatormanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -35,19 +43,44 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "CameraManager.cs",
-              "DocumentMoniker": "C:\\Users\\enema\\Work\\College\\LICENTA\\RunnerFollower\\RF Simulator\\Assets\\Scripts\\CameraManager.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\CameraManager.cs",
-              "ToolTip": "C:\\Users\\enema\\Work\\College\\LICENTA\\RunnerFollower\\RF Simulator\\Assets\\Scripts\\CameraManager.cs",
-              "RelativeToolTip": "Assets\\Scripts\\CameraManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAXAAAAAAAAAA==",
+              "Title": "RobotController.cs",
+              "DocumentMoniker": "C:\\Users\\enema\\Work\\College\\LICENTA\\RunnerFollower\\RF Simulator\\Assets\\Scripts\\RobotController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\RobotController.cs",
+              "ToolTip": "C:\\Users\\enema\\Work\\College\\LICENTA\\RunnerFollower\\RF Simulator\\Assets\\Scripts\\RobotController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\RobotController.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAewCoAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-23T09:05:04.658Z",
+              "WhenOpened": "2025-05-26T19:18:35.988Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "TCPServer.cs",
+              "DocumentMoniker": "C:\\Users\\enema\\Work\\College\\LICENTA\\RunnerFollower\\RF Simulator\\Assets\\Scripts\\TCPServer.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\TCPServer.cs",
+              "ToolTip": "C:\\Users\\enema\\Work\\College\\LICENTA\\RunnerFollower\\RF Simulator\\Assets\\Scripts\\TCPServer.cs",
+              "RelativeToolTip": "Assets\\Scripts\\TCPServer.cs",
+              "ViewState": "AgIAAJUAAAAAAAAAAAAswL4AAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-23T16:06:28.76Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CameraManager.cs",
+              "DocumentMoniker": "C:\\Users\\enema\\Work\\College\\LICENTA\\RunnerFollower\\RF Simulator\\Assets\\Scripts\\CameraManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\CameraManager.cs",
+              "ToolTip": "C:\\Users\\enema\\Work\\College\\LICENTA\\RunnerFollower\\RF Simulator\\Assets\\Scripts\\CameraManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\CameraManager.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAxwBoAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-23T09:05:04.658Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "PlayerManager.cs",
               "DocumentMoniker": "C:\\Users\\enema\\Work\\College\\LICENTA\\RunnerFollower\\RF Simulator\\Assets\\Scripts\\PlayerManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerManager.cs",
@@ -55,44 +88,41 @@
               "RelativeToolTip": "Assets\\Scripts\\PlayerManager.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-22T20:44:45.049Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-22T20:44:45.049Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "AnimatorManager.cs",
               "DocumentMoniker": "C:\\Users\\enema\\Work\\College\\LICENTA\\RunnerFollower\\RF Simulator\\Assets\\Scripts\\AnimatorManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\AnimatorManager.cs",
               "ToolTip": "C:\\Users\\enema\\Work\\College\\LICENTA\\RunnerFollower\\RF Simulator\\Assets\\Scripts\\AnimatorManager.cs",
               "RelativeToolTip": "Assets\\Scripts\\AnimatorManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABIAAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-23T09:05:11.428Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-23T09:05:11.428Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "InputManager.cs",
               "DocumentMoniker": "C:\\Users\\enema\\Work\\College\\LICENTA\\RunnerFollower\\RF Simulator\\Assets\\Scripts\\InputManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\InputManager.cs",
               "ToolTip": "C:\\Users\\enema\\Work\\College\\LICENTA\\RunnerFollower\\RF Simulator\\Assets\\Scripts\\InputManager.cs",
               "RelativeToolTip": "Assets\\Scripts\\InputManager.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAQwDMAAAAlAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwDMAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-22T20:36:49.153Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-22T20:36:49.153Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "PlayerLocomotion.cs",
               "DocumentMoniker": "C:\\Users\\enema\\Work\\College\\LICENTA\\RunnerFollower\\RF Simulator\\Assets\\Scripts\\PlayerLocomotion.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerLocomotion.cs",
               "ToolTip": "C:\\Users\\enema\\Work\\College\\LICENTA\\RunnerFollower\\RF Simulator\\Assets\\Scripts\\PlayerLocomotion.cs",
               "RelativeToolTip": "Assets\\Scripts\\PlayerLocomotion.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAgwDcAAAAsAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADcAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-22T20:36:42.039Z"
             }
