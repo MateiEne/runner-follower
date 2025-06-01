@@ -28,7 +28,8 @@ if len(sys.argv) > 1 and sys.argv[1].lower() in ['hog', 'yolov4']:
 # Create the appropriate follower instance
 if args.detector == "yolov4":
     print(f"Using YOLOv4-tiny for person detection (bounds: {args.min_bound}, {args.max_bound})")
-    follower = BoundedFollowerYoloV4(min_bound=args.min_bound, max_bound=args.max_bound)
+    # follower = BoundedFollowerYoloV4(min_bound=args.min_bound, max_bound=args.max_bound)
+    follower = BoundedFollowerYoloV4()
 else:
     print(f"Using HOG for person detection (bounds: {args.min_bound}, {args.max_bound})")
     follower = BoundedFollowerHog(min_bound=args.min_bound, max_bound=args.max_bound)

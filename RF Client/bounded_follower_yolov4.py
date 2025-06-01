@@ -3,7 +3,7 @@ import numpy as np
 import os
 from bounded_follower import BoundedFollower
 
-class BoundedFollowerYoloV4(BoundedFollower):
+class BoundedFollowerYoloV4():
     """
     A follower that detects a person in the image using YOLOv4-tiny,
     draws a bounding box around them, and displays the result.
@@ -13,7 +13,9 @@ class BoundedFollowerYoloV4(BoundedFollower):
                  config_path="yolov4-tiny.cfg", 
                  classes_path="coco.names",
                  min_bound=0.5,
-                 max_bound=0.8):
+                 max_bound=0.8,
+                 left_bound=0.4,
+                 right_bound=0.6):
         """
         Initialize the YOLOv4-tiny detector.
         
@@ -25,11 +27,15 @@ class BoundedFollowerYoloV4(BoundedFollower):
             max_bound: Maximum bound as a percentage of image size (0.0 to 1.0)
         """
         # Call the parent class constructor
-        super().__init__(min_bound, max_bound)
+        # super().__init__(min_bound, max_bound)
         
         self.weights_path = weights_path
         self.config_path = config_path
         self.classes_path = classes_path
+        self.min_bound = min_bound
+        self.max_bound = max_bound
+        self.left_bound = left_bound
+        self.right_bound = right_bound
         
         # Check if the required files exist
         self.model_ready = self._check_files()
@@ -174,26 +180,15 @@ class BoundedFollowerYoloV4(BoundedFollower):
                 # Add a label with confidence and height information
                 label = f"Person: {confidences[i]:.2f}, Height: {person_height_px}px ({height_percentage:.1f}%)"
                 cv2.putText(result_image, label, (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
-                
-                # Print the height information to the console
-                #print(f"Detected person with height: {person_height_px} pixels ({height_percentage:.1f}% of image height)")
-                
+               
                 person_count += 1
 
                 command = self.check_bounds(result_image, width, height, x, y, w, h)
                 break
-
-        # Draw the boundary rectangles
-        #self.draw_bounds(result_image, width, height)
         
         # Display the result
         cv2.imshow("YOLOv4 Follower", result_image)
         
-        # Return a message with the detection result
-        # if person_count > 0:
-        #     return f"Detected {person_count} person(s) in the image using YOLOv4-tiny"
-        # else:
-        #     return "No persons detected in the image using YOLOv4-tiny"
         return command
     
     def check_bounds(self, result_image, width, height, x, y, w, h):
@@ -202,8 +197,6 @@ class BoundedFollowerYoloV4(BoundedFollower):
 
         # Combine horizontal and vertical commands
         return f"{horizontal_command}|{vertical_command}"
-
-
         
     def check_horizontal_bounds(self, result_image, width, height, x, w):
         # Draw a vertical line at the width * self.left_bound
@@ -213,58 +206,35 @@ class BoundedFollowerYoloV4(BoundedFollower):
         # Draw a vertical line at the width * self.right_bound
         right_bound_x = int(width * self.right_bound)
         cv2.line(result_image, (right_bound_x, 0), (right_bound_x, height), (0, 120, 255), 2)
-
-        if x < left_bound_x:
-            # Move right
-            delta_x = left_bound_x - x
-            cv2.putText(result_image, f"Move Right ({delta_x}px)", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 120, 0), 2)
-            return f"Right#{delta_x}"
-        elif x + w > right_bound_x:
-            # Move left
-            delta_x = (x + w) - right_bound_x
-            cv2.putText(result_image, f"Move Left ({delta_x}px)", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 120, 255), 2)
-            return f"Left#{delta_x}"
-        else:
-            cv2.putText(result_image, "Within Horizontal Bounds", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
-            return "None"
+ 
+        # Get the point at the center of left and right bounds
+        desired_position = int((left_bound_x + right_bound_x) / 2)
+        current_position = x + int(w / 2)
+        return f"distance#{desired_position - current_position}"
+    
         
     def check_vertical_bounds(self, result_image, width, height, y):
         # Draw the minimum bound rectangle
         min_rect_height = int(height * self.min_bound)
-        
         # Calculate the top-left and bottom-right coordinates to center the rectangle
         min_rect_y = int((height - min_rect_height) / 2)
-
         # Draw a horizontal line at the top of the minimum bound rectangle
         cv2.line(result_image, (0, min_rect_y), (width, min_rect_y), (0, 255, 255), 2)
         
-        
         # Draw the maximum bound rectangle
         max_rect_height = int(height * self.max_bound)
-        
         # Calculate the top-left and bottom-right coordinates to center the rectangle
         max_rect_y = int((height - max_rect_height) / 2)
-
         # Draw a horizontal line at the top of the maximum bound rectangle
         cv2.line(result_image, (0, max_rect_y), (width, max_rect_y), (0, 0, 255), 2)
 
 
+        # Draw a horizontal line at the middle of the minimum and maximum bounds
+        desired_position = int((min_rect_y + max_rect_y) / 2)
+        print(f"Desired movement position: {desired_position}")
         # Draw a horizontal line at the top of the detected person
         cv2.line(result_image, (0, y), (width, y), (255, 0, 0), 2)
+        # assign the top of the detected person to current_position
+        current_position = y
 
-
-        # Check if the detected person is within the bounds
-        if y < max_rect_y:
-            # Move down == backward
-            delta_y = max_rect_y - y
-            cv2.putText(result_image, f"Move Down ({delta_y}px)", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 255), 2)
-            return f"Backward#{delta_y}"
-        elif y > min_rect_y:
-            # Move up == forward
-            delta_y = y - min_rect_y
-            cv2.putText(result_image, f"Move Up ({delta_y}px)", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
-            return f"Forward#{delta_y}"
-        else:
-            cv2.putText(result_image, "Within Bounds", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
-            return "None"
-        # Return a message with the detection result
+        return f"distance#{desired_position - current_position}"
