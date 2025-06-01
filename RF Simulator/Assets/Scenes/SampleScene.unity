@@ -570,6 +570,7 @@ GameObject:
   - component: {fileID: 1640854347}
   - component: {fileID: 1640854352}
   - component: {fileID: 1640854351}
+  - component: {fileID: 1640854353}
   m_Layer: 0
   m_Name: Robot
   m_TagString: Untagged
@@ -692,7 +693,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!114 &1640854352
 MonoBehaviour:
@@ -706,6 +707,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b8653aa6a42a1a4bb6a8ce8181ca671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  robotPhysics: {fileID: 0}
+  pixelToUnityFactor: 0.01
+  desired_distance_movement: 40
+  kp_movement: 0.1
+  ki_movement: 0
+  kd_movement: 0.01
+  desired_distance_rotation: 0
+  kp_rotation: 10
+  ki_rotation: 0
+  kd_rotation: 0.01
+--- !u!114 &1640854353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640854346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6337b74fb20a93c42ba44927c3e03900, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxRPM: 12000
+  wheelRadius: 0.03
+  maxSpeed: 1.5
+  motorAcceleration: 5
+  maxSteeringAngle: 30
+  steeringSpeed: 3
+  maxSteeringCommand: 1
+  speedCommand: 0
+  steeringCommand: 0
 --- !u!1 &1851186158
 GameObject:
   m_ObjectHideFlags: 0

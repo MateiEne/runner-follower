@@ -1,7 +1,6 @@
 import cv2
 import numpy as np
 import os
-from bounded_follower import BoundedFollower
 
 class BoundedFollowerYoloV4():
     """
@@ -26,8 +25,6 @@ class BoundedFollowerYoloV4():
             min_bound: Minimum bound as a percentage of image size (0.0 to 1.0)
             max_bound: Maximum bound as a percentage of image size (0.0 to 1.0)
         """
-        # Call the parent class constructor
-        # super().__init__(min_bound, max_bound)
         
         self.weights_path = weights_path
         self.config_path = config_path
