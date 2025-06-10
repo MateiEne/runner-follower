@@ -12,8 +12,8 @@ public class RobotPhysicsController : MonoBehaviour
 
     [Header("Steering settings")]
     public float maxSteeringAngle = 30f; // degrees
-    public float steeringSpeed = 3f;
-    public float maxSteeringCommand = 1f; // max PID output
+    public float steeringSpeed = 10f;
+    public float maxSteeringCommand = 2f; // max PID output
 
     [HideInInspector]
     public float speedCommand = 0f; // from PID
@@ -59,12 +59,12 @@ public class RobotPhysicsController : MonoBehaviour
 
     void MoveRobot()
     {
-        // 1. ROTIRE: aplicăm rotație pe baza vitezei unghiulare (grade/secundă)
+        // 1. ROTIRE: aplicam rotatie pe baza vitezei unghiulare (grade/secunda)
         float rotationAmount = currentSteeringAngle * Time.fixedDeltaTime;
         Quaternion deltaRotation = Quaternion.Euler(0f, rotationAmount, 0f);
         _rBody.MoveRotation(_rBody.rotation * deltaRotation);
 
-        // 2. DEPLASARE: deplasăm înainte pe axa 'forward' a corpului rotit
+        // 2. DEPLASARE: deplasam inainte pe axa 'forward' a corpului rotit
         Vector3 direction = _rBody.rotation * Vector3.forward;
         _rBody.MovePosition(_rBody.position + direction * currentSpeed * Time.fixedDeltaTime);
     }

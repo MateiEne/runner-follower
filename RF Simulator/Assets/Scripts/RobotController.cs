@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditor.PackageManager;
+using UnityEngine;
 
 public class RobotController : MonoBehaviour
 {
@@ -32,11 +33,6 @@ public class RobotController : MonoBehaviour
                 Debug.LogError("RobotPhysicsController component not found!");
             }
         }
-
-        if (robotPhysics == null)
-        {
-            Debug.LogError("RobotPhysicsController missing!");
-        }
     }
 
     public void ProcessCommand(string command)
@@ -67,13 +63,32 @@ public class RobotController : MonoBehaviour
         int distance = int.Parse(parts[1]);
         float error = (desired_distance_movement - distance) * pixelToUnityFactor;
 
+        //integral_movement += error * Time.fixedDeltaTime;
+        //float derivative = (error - previous_error_movement) / Time.fixedDeltaTime;
+        //previous_error_movement = error;
+
+        //float speedOutput = kp_movement * error + ki_movement * integral_movement + kd_movement * derivative;
+        //Debug.Log("controller: " + speedOutput);
+        //robotPhysics.speedCommand = speedOutput;
+        // DYNAMIC GAINS
+        float absErr = Mathf.Abs(error);
+        float kp = (absErr > 20f) ? kp_movement : kp_movement * 0.4f;
+        float kd = kd_movement * 1.2f;
+        float maxLimit = (absErr > 20f) ? 1f : 0.15f;
+
         integral_movement += error * Time.fixedDeltaTime;
         float derivative = (error - previous_error_movement) / Time.fixedDeltaTime;
         previous_error_movement = error;
 
-        float speedOutput = kp_movement * error + ki_movement * integral_movement + kd_movement * derivative;
-        Debug.Log("controller: " + speedOutput);
-        robotPhysics.speedCommand = speedOutput;
+        float rawOutput = kp * error + ki_movement * integral_movement + kd * derivative;
+        float clamped = Mathf.Clamp(rawOutput, -maxLimit, maxLimit);
+
+        // RATE LIMIT
+        robotPhysics.speedCommand = Mathf.MoveTowards(
+            robotPhysics.speedCommand,
+            clamped,
+            0.3f * Time.fixedDeltaTime
+        );
     }
 
     void ProcessRotationCommand(string command)
