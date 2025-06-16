@@ -3,14 +3,16 @@ import numpy as np
 from ultralytics import YOLO
 
 def green_ratio(roi):
-    """Returnează procentul de pixeli verzi în ROI."""
-    hsv = cv2.cvtColor(roi, cv2.COLOR_BGR2HSV)
-    # Interval HSV pentru verde (ajustează după simulator)
+    """Returneaza procentul de pixeli verzi in ROI (Region of Interest).
+    (ROI este o portiune a imaginii care contine o persoana detectata.)"""
+    # folosesc HSV pentru ca separa mai bine nunanta verde de variatiile de lumina si intensitate spre deosebire de RGB
+    hsv = cv2.cvtColor(roi, cv2.COLOR_BGR2HSV) 
+    # Interval HSV pentru verde 
     lower = np.array([40, 50, 50])
     upper = np.array([80, 255, 255])
-    mask = cv2.inRange(hsv, lower, upper)
-    # Adăugăm un epsilon pentru a evita diviziunea la zero
-    return mask.sum() / (mask.size + 1e-6)
+    mask = cv2.inRange(hsv, lower, upper) # o imagine monocromatica cu 1 pentru verde si 0 pentru restul
+    
+    return mask.sum() / (mask.size + 1e-6) # evit diviziunea la 0
 
 class ColorFollowerSmooth:
     """
@@ -19,11 +21,11 @@ class ColorFollowerSmooth:
     """
     def __init__(self,
                  model_path='yolo11n.pt',
-                 min_bound=0.5,
-                 max_bound=0.8,
+                 min_bound=0.5, # are inaltimea 50% din imagine
+                 max_bound=0.8, # are inaltimea 80% din imagine
                  left_bound=0.4,
                  right_bound=0.6,
-                 green_threshold=0.1):
+                 green_threshold=0.2): # valoare mai mica -> mai tolerant; valoare mai mare -> necesita o suprafata mai consistenta de verde
         self.model = YOLO(model_path)
         self.min_bound = min_bound
         self.max_bound = max_bound
@@ -35,20 +37,24 @@ class ColorFollowerSmooth:
         print("YOLO + ColorFollowerSmooth inițializat.")
 
     def processImage(self, image_data: bytes) -> str:
-        # Decodare JPEG în BGR
+        print("Model YOLO încărcat:")
+        print(self.model.yaml.get('version'))
+        # Decodare JPEG in matrice BGR
         img = cv2.imdecode(
             np.frombuffer(image_data, dtype=np.uint8),
             cv2.IMREAD_COLOR
         )
         if img is None:
             return "None|None"
-        vis = img.copy()
+        vis = img.copy() # pentru vizualizare, desenez bounding box uri, text, etc
         H, W, _ = img.shape
 
-        # 1) Detecție YOLO de persoane
+        # 1) Detectie YOLO de persoane
+        # face predictia, pentru clasa 0 care reprezinta clasa person
+        # intoarce o lista de obiecte Results, dar eu trimit o singura imagine. Deci lista va avea un singur element
         res = self.model(img, classes=[0], verbose=False)[0]
         if not res.boxes:
-            # Fără cutii YOLO: dacă avem prev_bbox, continuăm; altfel neutr.
+            # Fara cutii YOLO: daca avem prev_bbox, continuam; altfel neutr.
             if self.prev_bbox is None:
                 cv2.imshow("Follower", vis)
                 return "None|None"
@@ -56,7 +62,7 @@ class ColorFollowerSmooth:
                 best_box = self.prev_bbox
         else:
             # 2) Calcul green_ratio pentru fiecare box
-            xyxy = res.boxes.xyxy.cpu().numpy().astype(int)
+            xyxy = res.boxes.xyxy.cpu().numpy().astype(int) # coordonate (x1, y1, x2, y2) pentru fiecare box
             best_ratio = 0.0
             best_box = None
             for (x1, y1, x2, y2) in xyxy:
@@ -69,9 +75,9 @@ class ColorFollowerSmooth:
                     best_ratio = ratio
                     best_box = (x1_, y1_, x2_, y2_)
 
-            # 3) Smoothing: dacă nu găsim verde, folosim prev_bbox
+            # 3) Smoothing: daca nu gasim verde, folosim prev_bbox
             if best_box is not None and best_ratio >= self.green_threshold:
-                # validăm și actualizăm prev_bbox
+                # validam si actualizam prev_bbox
                 self.prev_bbox = best_box
             else:
                 if self.prev_bbox is None:
@@ -81,19 +87,19 @@ class ColorFollowerSmooth:
                 # folosim ultima cutie precedentă
                 best_box = self.prev_bbox
 
-        # 4) Extragem coordonate și desenăm
+        # 4) Extragem coordonate si desenam
         x1, y1, x2, y2 = best_box
         w, h = x2 - x1, y2 - y1
         cv2.rectangle(vis, (x1, y1), (x2, y2), (0, 255, 0), 2)
-        cv2.putText(vis,
-                    f"Tracked: {best_box}",
-                    (x1, y1 - 10),
-                    cv2.FONT_HERSHEY_SIMPLEX,
-                    0.6,
-                    (0, 255, 0),
-                    2)
+        # cv2.putText(vis,
+        #             f"Tracked: {best_box}",
+        #             (x1, y1 - 10),
+        #             cv2.FONT_HERSHEY_SIMPLEX,
+        #             0.6,
+        #             (0, 255, 0),
+        #             2)
 
-        # 5) Calculul comenzii PID (dx|dy)
+        # 5) Calculul distantei (dx|dy)
         command = self.check_bounds(vis, W, H, x1, y1, w, h)
         cv2.imshow("Follower", vis)
         return command

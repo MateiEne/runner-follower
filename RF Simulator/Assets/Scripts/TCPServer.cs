@@ -100,6 +100,7 @@ public class TCPServer : MonoBehaviour
         {
             SendImageToClient();
             yield return new WaitForSeconds(0.1f); // Trimite la fiecare 100ms (10 FPS)
+            //yield return new WaitForSecondsRealtime(0.1f);
         }
     }
 
